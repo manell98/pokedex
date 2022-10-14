@@ -17,4 +17,20 @@ export const styles = StyleSheet.create({
       flexDirection: "row",
       flexWrap: "wrap"
     },
+    botao: {
+        height: 80,
+        width: 100,
+        borderRadius: 5,
+        backgroundColor: '#1a7588',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: "#ddd",
+        marginBottom: 16,
+    },
+    textoBotao: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: "#fff",
+        fontSize: 16,
+    },
 });

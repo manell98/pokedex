@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View} from 'react-native';
-import PokemonComponent from "./src/components/PokemonComponent";
+import Index from "./src/components/Pokemon";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <PokemonComponent />
+      <Index />
     </View>
   );
 }

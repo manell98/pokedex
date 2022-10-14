@@ -1,9 +1,9 @@
 import {Image, Text, TouchableOpacity, View} from "react-native";
 import { useState } from "react";
 import axios from "axios";
-import { styles } from "./stylesPokemon";
+import { styles } from "./styles";
 
-const PokemonComponent = () => {
+const Index = () => {
     const [pokemons, setPokemons] = useState([]);
 
     const [objImgPokemons, setObjImgPokemons] = useState([{}]);
@@ -29,18 +29,20 @@ const PokemonComponent = () => {
 
     return (
         <View>
-            <TouchableOpacity onPress={listarPokemons}>
-                <Text>Listar Pokemons!</Text>
+            <TouchableOpacity style={styles.botao} onPress={listarPokemons}>
+                <Text style={styles.textoBotao}>Listar Pokemons!</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={listarImgPokemons}>
-                <Text>Listar imgs Pokemons!</Text>
+            <TouchableOpacity style={styles.botao} onPress={listarImgPokemons}>
+                <Text style={styles.textoBotao}>Listar imgs Pokemons!</Text>
             </TouchableOpacity>
 
             <View style={styles.div}>
                 {
                     objImgPokemons.map((objPokemon: any, index: number) => (
-                        <Image style={styles.stretch} key={index} source={{uri: objPokemon.img}} accessibilityLabel={objPokemon.nome} />
+                        <TouchableOpacity>
+                            <Image style={styles.stretch} key={index} source={{uri: objPokemon.img}} accessibilityLabel={objPokemon.nome} />
+                        </TouchableOpacity>
                     ))
                 }
             </View>
@@ -48,4 +50,4 @@ const PokemonComponent = () => {
     );
 }
 
-export default PokemonComponent;
+export default Index;
