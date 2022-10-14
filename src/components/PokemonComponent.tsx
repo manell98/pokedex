@@ -37,7 +37,7 @@ const PokemonComponent = () => {
                 <Text>Listar imgs Pokemons!</Text>
             </TouchableOpacity>
 
-            <View>
+            <View style={styles.div}>
                 {
                     objImgPokemons.map((objPokemon: any, index: number) => (
                         <Image style={styles.stretch} key={index} source={{uri: objPokemon.img}} accessibilityLabel={objPokemon.nome} />

@@ -11,4 +11,10 @@ export const styles = StyleSheet.create({
         width: 100,
         height: 100,
     },
+    div: {
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "row",
+      flexWrap: "wrap"
+    },
 });
