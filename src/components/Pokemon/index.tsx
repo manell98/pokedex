@@ -36,7 +36,6 @@ const Index = () => {
         listarPokemons();
     }, []);
 
-
     return (
         <ScrollView>
             <View style={styles.div}>
