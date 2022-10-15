@@ -2,9 +2,8 @@ import {Image, ScrollView, TouchableOpacity, View} from "react-native";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { styles } from "./styles";
-import {InfoPokemonInterface} from "./interfaces/infoPokemon";
 
-const Index = () => {
+const Index = (props: any) => {
     const [objImgPokemons, setObjImgPokemons] = useState([{}]);
 
     const listarPokemons = async () => {
@@ -24,14 +23,6 @@ const Index = () => {
         setObjImgPokemons(arrayImgs);
     };
 
-    const infoPokemons = async (infoPokemon: InfoPokemonInterface) => {
-        console.log("Clicou aqui!! ", infoPokemon);
-
-        const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${infoPokemon.nome}`);
-
-        console.log(result.data);
-    }
-
     useEffect(() => {
         listarPokemons();
     }, []);
@@ -41,7 +32,10 @@ const Index = () => {
             <View style={styles.div}>
                 {
                     objImgPokemons.map((objPokemon: any, index: number) => (
-                        <TouchableOpacity key={index} onPress={() => infoPokemons({ nome: objPokemon.nome, urlImg: objPokemon.img })}>
+                        <TouchableOpacity key={index} onPress={() => props.navigation.navigate('infoPokemon', {
+                            nome: objPokemon.nome,
+                            urlImg: objPokemon.img
+                        })}>
                             <Image style={styles.img} source={{uri: objPokemon.img}} accessibilityLabel={objPokemon.nome} />
                         </TouchableOpacity>
                     ))
