@@ -2,6 +2,7 @@ import {Image, ScrollView, TouchableOpacity, View} from "react-native";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { styles } from "./styles";
+import {InfoPokemonInterface} from "./interfaces/infoPokemon";
 
 const Index = () => {
     const [objImgPokemons, setObjImgPokemons] = useState([{}]);
@@ -23,8 +24,12 @@ const Index = () => {
         setObjImgPokemons(arrayImgs);
     };
 
-    const infoPokemons = (infoPokemon: any) => {
-        console.log("Clicou aqui!! ", infoPokemon)
+    const infoPokemons = async (infoPokemon: InfoPokemonInterface) => {
+        console.log("Clicou aqui!! ", infoPokemon);
+
+        const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${infoPokemon.nome}`);
+
+        console.log(result.data);
     }
 
     useEffect(() => {
