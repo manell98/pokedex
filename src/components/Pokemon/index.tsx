@@ -7,7 +7,7 @@ const Index = () => {
     const [objImgPokemons, setObjImgPokemons] = useState([{}]);
 
     const listarPokemons = async () => {
-        const result = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=90");
+        const result = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=50");
 
         const arrayPokemons = result.data.results;
 
@@ -23,6 +23,10 @@ const Index = () => {
         setObjImgPokemons(arrayImgs);
     };
 
+    const infoPokemons = (infoPokemon: any) => {
+        console.log("Clicou aqui!! ", infoPokemon)
+    }
+
     useEffect(() => {
         listarPokemons();
     }, []);
@@ -33,7 +37,7 @@ const Index = () => {
             <View style={styles.div}>
                 {
                     objImgPokemons.map((objPokemon: any, index: number) => (
-                        <TouchableOpacity key={index}>
+                        <TouchableOpacity key={index} onPress={() => infoPokemons({ nome: objPokemon.nome, urlImg: objPokemon.img })}>
                             <Image style={styles.img} source={{uri: objPokemon.img}} accessibilityLabel={objPokemon.nome} />
                         </TouchableOpacity>
                     ))
