@@ -3,12 +3,15 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import { styles } from "./styles";
 
+import {TipoDoPokemonInterface} from "../interfaces/tipoDoPokemon";
+import {EstatisticasDoPokemonInterface} from "../interfaces/estatisticasDoPokemon";
+
 const Index = (props: any) => {
     const obj = props.route.params;
 
     const [infoPokemon, setInfoPokemon] = useState({
-        abilities: [],
-        base_experience: 0
+        types: [],
+        stats: [],
     });
 
     const pegarInfoPokemon = async () => {
@@ -23,13 +26,34 @@ const Index = (props: any) => {
 
     return (
         <View style={styles.container}>
-            <Image style={styles.img} source={{uri: obj.urlImg}} accessibilityLabel={obj.nome} />
-            <Text>{infoPokemon.base_experience}</Text>
-            {
-                infoPokemon.abilities.map((objAbilities: any) => (
-                    <Text key={objAbilities.ability.url}>{objAbilities.ability.name}</Text>
-                ))
-            }
+            <View style={styles.divNomePokemon}>
+                <Text style={styles.texNomePokemon}>{obj.nome[0].toUpperCase() + obj.nome.substring(1)}</Text>
+            </View>
+
+            <View style={styles.divInfo}>
+                <View style={styles.divInfoHeader}>
+                    <Image style={styles.img} source={{uri: obj.urlImg}} accessibilityLabel={obj.nome} />
+
+                    {
+                        infoPokemon.types.map((objType: TipoDoPokemonInterface) => (
+                            <View key={objType.slot} style={styles.divType}>
+                                <Text style={styles.textType}>{objType.type.name.toUpperCase()}</Text>
+                            </View>
+                        ))
+                    }
+                </View>
+
+                <View style={styles.divStats}>
+                    {
+                        infoPokemon.stats.map((objStats: EstatisticasDoPokemonInterface) => (
+                            <View style={styles.divStatsInfo} key={objStats.stat.name}>
+                                <Text style={styles.textStatName}>{objStats.stat.name.toUpperCase()}</Text>
+                                <Text style={styles.textStatBaseStat}>{objStats.base_stat}</Text>
+                            </View>
+                        ))
+                    }
+                </View>
+            </View>
         </View>
     );
 }
