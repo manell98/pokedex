@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Index from "./src/components/Pokemon";
-import ComponenteInfoPokemon from "./src/components/Pokemon/infoPokemon/componenteInfoPokemon";
+import InfoPokemon from "./src/components/Pokemon/infoPokemon";
 
 const Stack = createNativeStackNavigator();
 
@@ -12,7 +12,7 @@ export default function App() {
         <Stack.Navigator initialRouteName="indexPokemon" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="indexPokemon" component={Index} />
             {/*// @ts-ignore */}
-            <Stack.Screen name="infoPokemon" component={ComponenteInfoPokemon} />
+          <Stack.Screen name="infoPokemon" component={InfoPokemon} />
         </Stack.Navigator>
       </NavigationContainer>
   );
