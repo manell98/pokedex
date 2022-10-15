@@ -5,17 +5,19 @@ import { styles } from "./styles";
 
 import {TipoDoPokemonInterface} from "../interfaces/tipoDoPokemon";
 import {EstatisticasDoPokemonInterface} from "../interfaces/estatisticasDoPokemon";
+import {PropsPokemon} from "./interface/propsPokemon";
+import {InfoPokemon} from "./interface/infoPokemon";
 
-const Index = (props: any) => {
-    const obj = props.route.params;
+const Index = (props: PropsPokemon) => {
+    const infosDoPokemon = props.route.params;
 
-    const [infoPokemon, setInfoPokemon] = useState({
+    const [infoPokemon, setInfoPokemon] = useState<InfoPokemon>({
         types: [],
         stats: [],
     });
 
     const pegarInfoPokemon = async () => {
-        const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${obj.nome}`);
+        const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${infosDoPokemon.nome}`);
 
         setInfoPokemon(result.data);
     }
@@ -27,12 +29,12 @@ const Index = (props: any) => {
     return (
         <View style={styles.container}>
             <View style={styles.divNomePokemon}>
-                <Text style={styles.texNomePokemon}>{obj.nome[0].toUpperCase() + obj.nome.substring(1)}</Text>
+                <Text style={styles.texNomePokemon}>{infosDoPokemon.nome[0].toUpperCase() + infosDoPokemon.nome.substring(1)}</Text>
             </View>
 
             <View style={styles.divInfo}>
                 <View style={styles.divInfoHeader}>
-                    <Image style={styles.img} source={{uri: obj.urlImg}} accessibilityLabel={obj.nome} />
+                    <Image style={styles.img} source={{uri: infosDoPokemon.urlImg}} accessibilityLabel={infosDoPokemon.nome} />
 
                     {
                         infoPokemon.types.map((objType: TipoDoPokemonInterface) => (

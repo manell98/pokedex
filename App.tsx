@@ -11,6 +11,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="indexPokemon" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="indexPokemon" component={Index} />
+            {/*// @ts-ignore */}
           <Stack.Screen name="infoPokemon" component={InfoPokemon} />
         </Stack.Navigator>
       </NavigationContainer>
