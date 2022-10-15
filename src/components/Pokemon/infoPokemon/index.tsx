@@ -1,8 +1,9 @@
-import {Image, StyleSheet, Text, View} from "react-native";
+import {Image, Text, View} from "react-native";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import { styles } from "./styles";
 
-const InfoPokemon = (props: any) => {
+const Index = (props: any) => {
     const obj = props.route.params;
 
     const [infoPokemon, setInfoPokemon] = useState({
@@ -10,14 +11,14 @@ const InfoPokemon = (props: any) => {
         base_experience: 0
     });
 
-    const abilitiesPokemon = async () => {
+    const pegarInfoPokemon = async () => {
         const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${obj.nome}`);
 
         setInfoPokemon(result.data);
     }
 
     useEffect(() => {
-        abilitiesPokemon();
+        pegarInfoPokemon();
     }, []);
 
     return (
@@ -33,19 +34,4 @@ const InfoPokemon = (props: any) => {
     );
 }
 
-export default InfoPokemon;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 42,
-        marginBottom: 42,
-    },
-    img: {
-        width: 100,
-        height: 100,
-    },
-});
+export default Index;
