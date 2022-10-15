@@ -2,16 +2,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Index from "./src/components/Pokemon";
-import InfoPokemon from "./src/components/Pokemon/infoPokemon";
+import ComponenteInfoPokemon from "./src/components/Pokemon/infoPokemon/componenteInfoPokemon";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
+    return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="indexPokemon" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="indexPokemon" component={Index} />
-          <Stack.Screen name="infoPokemon" component={InfoPokemon} />
+            {/*// @ts-ignore */}
+            <Stack.Screen name="infoPokemon" component={ComponenteInfoPokemon} />
         </Stack.Navigator>
       </NavigationContainer>
   );
