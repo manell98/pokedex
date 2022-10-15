@@ -40,8 +40,8 @@ const Index = () => {
             <View style={styles.div}>
                 {
                     objImgPokemons.map((objPokemon: any, index: number) => (
-                        <TouchableOpacity>
-                            <Image style={styles.stretch} key={index} source={{uri: objPokemon.img}} accessibilityLabel={objPokemon.nome} />
+                        <TouchableOpacity key={index}>
+                            <Image style={styles.stretch} source={{uri: objPokemon.img}} accessibilityLabel={objPokemon.nome} />
                         </TouchableOpacity>
                     ))
                 }
