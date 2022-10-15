@@ -12,21 +12,12 @@ export const styles = StyleSheet.create({
         height: 100,
     },
     div: {
+      width: '100%',
+      flexDirection: 'row',
       alignItems: "center",
       justifyContent: "center",
-      flexDirection: "row",
       flexWrap: "wrap"
     },
-    // botao: {
-    //     height: 80,
-    //     width: 100,
-    //     borderRadius: 5,
-    //     backgroundColor: '#1a7588',
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    //     color: "#ddd",
-    //     marginBottom: 16,
-    // },
     textoBotao: {
         alignItems: 'center',
         justifyContent: 'center',

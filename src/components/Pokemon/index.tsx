@@ -1,4 +1,4 @@
-import {Image, TouchableOpacity, View} from "react-native";
+import {Image, ScrollView, TouchableOpacity, View} from "react-native";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { styles } from "./styles";
@@ -7,7 +7,7 @@ const Index = () => {
     const [objImgPokemons, setObjImgPokemons] = useState([{}]);
 
     const listarPokemons = async () => {
-        const result = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=20");
+        const result = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=90");
 
         const arrayPokemons = result.data.results;
 
@@ -25,11 +25,11 @@ const Index = () => {
 
     useEffect(() => {
         listarPokemons();
-    }, [objImgPokemons]);
+    }, []);
 
 
     return (
-        <View>
+        <ScrollView>
             <View style={styles.div}>
                 {
                     objImgPokemons.map((objPokemon: any, index: number) => (
@@ -39,7 +39,7 @@ const Index = () => {
                     ))
                 }
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
