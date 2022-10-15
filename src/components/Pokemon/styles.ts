@@ -12,6 +12,8 @@ export const styles = StyleSheet.create({
         height: 100,
     },
     div: {
+      marginTop: 42,
+      marginBottom: 42,
       width: '100%',
       flexDirection: 'row',
       alignItems: "center",
