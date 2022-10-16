@@ -4,10 +4,7 @@ import {useEffect, useState} from "react";
 import {styles, DivNomePokemon} from "./styles";
 
 import CardInfoPokemon from "./cardInfo";
-import {TipoDoPokemonInterface} from "../interfaces/tipoDoPokemon";
-import {EstatisticasDoPokemonInterface} from "../interfaces/estatisticasDoPokemon";
 import {PropsPokemon} from "./interface/propsPokemon";
-import {InfoPokemon} from "./interface/infoPokemon";
 
 const Index = (props: PropsPokemon) => {
     const infosDoPokemon = props.route.params;
@@ -36,12 +33,12 @@ const Index = (props: PropsPokemon) => {
     return (
         <View style={styles.container}>
             <DivNomePokemon tipo={infoPokemon.types[0].type.name}>
-                <Text style={styles.texNomePokemon}>{obj.nome[0].toUpperCase() + obj.nome.substring(1)}</Text>
+                <Text style={styles.texNomePokemon}>{infosDoPokemon.nome[0].toUpperCase() + infosDoPokemon.nome.substring(1)}</Text>
             </DivNomePokemon>
 
             <CardInfoPokemon
                 infoPokemon={infoPokemon}
-                obj={obj}
+                obj={infosDoPokemon}
             />
         </View>
     );
