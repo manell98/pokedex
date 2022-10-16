@@ -1,11 +1,12 @@
 import {Image, Text, View} from "react-native";
-import {BarraProgressoStats, DivInfo, DivStatsInfo, DivType, styles} from "./styles";
+import {BarraProgressoStats, DivStatsInfo, DivType, styles} from "./styles";
 import {TipoDoPokemonInterface} from "../../interfaces/tipoDoPokemon";
 import {EstatisticasDoPokemonInterface} from "../../interfaces/estatisticasDoPokemon";
+import {DivBackgroundSection} from "../styles";
 
 const CardInfoPokemon = ({ obj, infoPokemon }: any) => {
     return (
-        <DivInfo tipo={infoPokemon.types[0].type.name}>
+        <DivBackgroundSection tipo={infoPokemon.types[0].type.name}>
             <View style={styles.divInfoHeader}>
                 <Image style={styles.img} source={{uri: obj.urlImg}} accessibilityLabel={obj.nome} />
 
@@ -31,7 +32,7 @@ const CardInfoPokemon = ({ obj, infoPokemon }: any) => {
                     ))
                 }
             </View>
-        </DivInfo>
+        </DivBackgroundSection>
     );
 };
 

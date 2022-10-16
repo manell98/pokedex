@@ -1,9 +1,9 @@
 import {StyleSheet} from "react-native";
 import styled from 'styled-components/native';
-import { definirCorPorTipoPokemon } from "../utils/utils";
+import {definirCorPadraoPorTipoPokemon, definirCorPorTipoPokemon} from "../utils/utils";
 import {TipoPokemon} from "./cardInfo/styles";
 
-export const DivNomePokemon = styled.View<TipoPokemon>`
+export const DivNomeSection = styled.View<TipoPokemon>`
   background-color: ${ ({ tipo }) => {
     // @ts-ignore
     const objCor = definirCorPorTipoPokemon[tipo] || '#ccc';
@@ -14,6 +14,15 @@ export const DivNomePokemon = styled.View<TipoPokemon>`
   justify-content: center;
 `;
 
+export const DivBackgroundSection = styled.View<TipoPokemon>`
+  background-color: ${ ({ tipo }) => {
+    // @ts-ignore
+    const objCor = definirCorPorTipoPokemon[tipo] || definirCorPadraoPorTipoPokemon;
+
+    return objCor.corComOpacidade;
+} };
+`;
+
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -21,7 +30,7 @@ export const styles = StyleSheet.create({
         paddingBottom: 42,
         backgroundColor: '#131016',
     },
-    texNomePokemon: {
+    texNomeSection: {
         color: '#fff',
         fontSize: 25,
         margin: 10,
