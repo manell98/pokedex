@@ -1,6 +1,6 @@
 import {StyleSheet} from "react-native";
 import styled from 'styled-components/native';
-import { definirCorPorTipoPokemon } from "../../utils/utils";
+import { definirCorPorTipoPokemon, definirCorPadraoPorTipoPokemon } from "../../utils/utils";
 
 const definirCorBarraDeProgresso = (valor: number) => {
     let cor = '#8B0000';
@@ -20,20 +20,11 @@ export type TipoPokemon = {
     tipo: string;
 }
 
-export const DivInfo = styled.View<TipoPokemon>`
-  background-color: ${ ({ tipo }) => {
-    // @ts-ignore
-    const objCor = definirCorPorTipoPokemon[tipo] || '#ccc';
-
-    return objCor.corComOpacidade;
-} };
-`;
-
 export const DivType = styled.View<TipoPokemon>`
   margin-left: 20px;
   background-color: ${ ({ tipo }) => {
     // @ts-ignore
-    const objCor = definirCorPorTipoPokemon[tipo] || '#ccc';
+    const objCor = definirCorPorTipoPokemon[tipo] || definirCorPadraoPorTipoPokemon;
 
     return objCor.cor;
   } };
@@ -75,7 +66,6 @@ export const styles = StyleSheet.create({
         marginLeft: 20,
         width: '100%',
         flexDirection: 'row',
-        flexWrap: "wrap",
         alignItems: "center",
     },
     textType: {

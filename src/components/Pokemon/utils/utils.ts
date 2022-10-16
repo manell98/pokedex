@@ -64,3 +64,8 @@ export const definirCorPorTipoPokemon = {
         corComOpacidade: "rgba(30,144,255,0.55)",
     },
 }
+
+export const definirCorPadraoPorTipoPokemon = {
+    cor: "#ccc",
+    corComOpacidade: "rgba(204,204,204,0.55)",
+}

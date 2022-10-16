@@ -1,15 +1,18 @@
-import {Text, View} from "react-native";
+import {ScrollView, Text, View} from "react-native";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {styles, DivNomePokemon} from "./styles";
+import {styles, DivNomeSection} from "./styles";
 
-import CardInfoPokemon from "./cardInfo";
 import {PropsPokemon} from "./interface/propsPokemon";
+import CardInfoPokemon from "./cardInfo";
+import CardProfile from "./cardProfile";
 
 const Index = (props: PropsPokemon) => {
     const infosDoPokemon = props.route.params;
 
     const [infoPokemon, setInfoPokemon] = useState({
+        abilities: [],
+        base_experience: 0,
         types: [{
             slot: 0,
             type: {
@@ -32,14 +35,20 @@ const Index = (props: PropsPokemon) => {
 
     return (
         <View style={styles.container}>
-            <DivNomePokemon tipo={infoPokemon.types[0].type.name}>
-                <Text style={styles.texNomePokemon}>{infosDoPokemon.nome[0].toUpperCase() + infosDoPokemon.nome.substring(1)}</Text>
-            </DivNomePokemon>
+            <DivNomeSection tipo={infoPokemon.types[0].type.name}>
+                <Text style={styles.texNomeSection}>{infosDoPokemon.nome[0].toUpperCase() + infosDoPokemon.nome.substring(1)}</Text>
+            </DivNomeSection>
 
-            <CardInfoPokemon
-                infoPokemon={infoPokemon}
-                obj={infosDoPokemon}
-            />
+            <ScrollView>
+                <CardInfoPokemon
+                    infoPokemon={infoPokemon}
+                    obj={infosDoPokemon}
+                />
+
+                <CardProfile
+                    infoPokemon={infoPokemon}
+                />
+            </ScrollView>
         </View>
     );
 }
