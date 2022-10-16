@@ -2,13 +2,14 @@ import {StyleSheet} from "react-native";
 
 export const styles = StyleSheet.create({
     div: {
-        marginTop: 42,
-        marginBottom: 42,
+        paddingTop: 42,
+        paddingBottom: 42,
         width: '100%',
         flexDirection: 'row',
         alignItems: "center",
         justifyContent: "center",
-        flexWrap: "wrap"
+        flexWrap: "wrap",
+        backgroundColor: '#708090',
     },
     img: {
         width: 100,

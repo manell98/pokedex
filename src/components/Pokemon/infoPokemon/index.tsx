@@ -1,18 +1,22 @@
-import {Image, Text, View} from "react-native";
+import {Text, View} from "react-native";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import { styles } from "./styles";
+import {styles, DivNomePokemon} from "./styles";
 
-import {TipoDoPokemonInterface} from "../interfaces/tipoDoPokemon";
-import {EstatisticasDoPokemonInterface} from "../interfaces/estatisticasDoPokemon";
+import CardInfoPokemon from "./cardInfo";
 import {PropsPokemon} from "./interface/propsPokemon";
-import {InfoPokemon} from "./interface/infoPokemon";
 
 const Index = (props: PropsPokemon) => {
     const infosDoPokemon = props.route.params;
 
-    const [infoPokemon, setInfoPokemon] = useState<InfoPokemon>({
-        types: [],
+    const [infoPokemon, setInfoPokemon] = useState({
+        types: [{
+            slot: 0,
+            type: {
+                name: "",
+                url: ""
+            },
+        }],
         stats: [],
     });
 
@@ -28,34 +32,14 @@ const Index = (props: PropsPokemon) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.divNomePokemon}>
+            <DivNomePokemon tipo={infoPokemon.types[0].type.name}>
                 <Text style={styles.texNomePokemon}>{infosDoPokemon.nome[0].toUpperCase() + infosDoPokemon.nome.substring(1)}</Text>
-            </View>
+            </DivNomePokemon>
 
-            <View style={styles.divInfo}>
-                <View style={styles.divInfoHeader}>
-                    <Image style={styles.img} source={{uri: infosDoPokemon.urlImg}} accessibilityLabel={infosDoPokemon.nome} />
-
-                    {
-                        infoPokemon.types.map((objType: TipoDoPokemonInterface) => (
-                            <View key={objType.slot} style={styles.divType}>
-                                <Text style={styles.textType}>{objType.type.name.toUpperCase()}</Text>
-                            </View>
-                        ))
-                    }
-                </View>
-
-                <View style={styles.divStats}>
-                    {
-                        infoPokemon.stats.map((objStats: EstatisticasDoPokemonInterface) => (
-                            <View style={styles.divStatsInfo} key={objStats.stat.name}>
-                                <Text style={styles.textStatName}>{objStats.stat.name.toUpperCase()}</Text>
-                                <Text style={styles.textStatBaseStat}>{objStats.base_stat}</Text>
-                            </View>
-                        ))
-                    }
-                </View>
-            </View>
+            <CardInfoPokemon
+                infoPokemon={infoPokemon}
+                obj={infosDoPokemon}
+            />
         </View>
     );
 }
