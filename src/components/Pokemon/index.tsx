@@ -21,7 +21,7 @@ const Index = (props: any) => {
     };
 
     const listarPokemons = async () => {
-        const result = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=50");
+        const result = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=300");
 
         const arrayPokemons = result.data.results;
 
