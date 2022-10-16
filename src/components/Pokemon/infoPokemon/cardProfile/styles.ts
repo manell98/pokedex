@@ -23,7 +23,9 @@ export const stylesProfile = StyleSheet.create({
         fontSize: 20,
     },
     infoProfile: {
-        paddingTop: 5,
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingRight: 20,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-around"
