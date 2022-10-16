@@ -4,9 +4,13 @@ import {useEffect, useState} from "react";
 import {styles, DivNomePokemon} from "./styles";
 
 import CardInfoPokemon from "./cardInfo";
+import {TipoDoPokemonInterface} from "../interfaces/tipoDoPokemon";
+import {EstatisticasDoPokemonInterface} from "../interfaces/estatisticasDoPokemon";
+import {PropsPokemon} from "./interface/propsPokemon";
+import {InfoPokemon} from "./interface/infoPokemon";
 
-const Index = (props: any) => {
-    const obj = props.route.params;
+const Index = (props: PropsPokemon) => {
+    const infosDoPokemon = props.route.params;
 
     const [infoPokemon, setInfoPokemon] = useState({
         types: [{
@@ -20,7 +24,7 @@ const Index = (props: any) => {
     });
 
     const pegarInfoPokemon = async () => {
-        const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${obj.nome}`);
+        const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${infosDoPokemon.nome}`);
 
         setInfoPokemon(result.data);
     }
