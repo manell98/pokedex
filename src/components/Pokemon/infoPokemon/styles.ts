@@ -1,5 +1,6 @@
 import {StyleSheet} from "react-native";
 import styled from 'styled-components/native';
+import { definirCorPorTipoPokemon } from "../utils/utils";
 
 const definirCorBarraDeProgresso = (valor: number) => {
     let cor = '#8B0000';
@@ -19,28 +20,21 @@ export type TipoPokemon = {
     tipo: string;
 }
 
-const definirCorPorTipoPokemon = {
-    "bug": "#BDB76B",
-    "dragon": "#0000FF",
-    "electric": "#FFA500",
-    "fairy": "#FF1493",
-    "fighting": "#8B0000",
-    "fire": "#FF6400",
-    "flying": "#00008B",
-    "grass": "#006400",
-    "ground": "#808000",
-    "ice": "#87CEEB",
-    "normal": "#F4A460",
-    "poison": "#8B008B",
-    "rock": "#696969",
-    "steel": "#2F4F4F",
-    "water": "#1E90FF",
-}
+export const DivInfo = styled.View<TipoPokemon>`
+  background-color: ${ ({ tipo }) => {
+    // @ts-ignore
+    const objCor = definirCorPorTipoPokemon[tipo] || '#ccc';
+
+    return objCor.corComOpacidade;
+} };
+`;
 
 export const DivNomePokemon = styled.View<TipoPokemon>`
   background-color: ${ ({ tipo }) => {
     // @ts-ignore
-    return definirCorPorTipoPokemon[tipo] || '#ccc'
+    const objCor = definirCorPorTipoPokemon[tipo] || '#ccc';
+    
+    return objCor.cor;
   } };
   align-items: center;
   justify-content: center;
@@ -49,8 +43,10 @@ export const DivNomePokemon = styled.View<TipoPokemon>`
 export const DivType = styled.View<TipoPokemon>`
   margin-left: 20px;
   background-color: ${ ({ tipo }) => {
-      // @ts-ignore
-    return definirCorPorTipoPokemon[tipo] || '#ccc'
+    // @ts-ignore
+    const objCor = definirCorPorTipoPokemon[tipo] || '#ccc';
+
+    return objCor.cor;
   } };
   height: 40px;
   width: 80px;
@@ -97,9 +93,6 @@ export const styles = StyleSheet.create({
         fontSize: 25,
         margin: 10,
         fontWeight: "bold"
-    },
-    divInfo: {
-        backgroundColor: "rgba(255,100,0,0.55)",
     },
     divInfoHeader: {
         marginLeft: 20,

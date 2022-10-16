@@ -1,7 +1,7 @@
 import {Image, Text, View} from "react-native";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {styles, BarraProgressoStats, DivStatsInfo, DivType, DivNomePokemon} from "./styles";
+import {styles, BarraProgressoStats, DivStatsInfo, DivType, DivNomePokemon, DivInfo} from "./styles";
 
 import {TipoDoPokemonInterface} from "../interfaces/tipoDoPokemon";
 import {EstatisticasDoPokemonInterface} from "../interfaces/estatisticasDoPokemon";
@@ -36,7 +36,7 @@ const Index = (props: any) => {
                 <Text style={styles.texNomePokemon}>{obj.nome[0].toUpperCase() + obj.nome.substring(1)}</Text>
             </DivNomePokemon>
 
-            <View style={styles.divInfo}>
+            <DivInfo tipo={infoPokemon.types[0].type.name}>
                 <View style={styles.divInfoHeader}>
                     <Image style={styles.img} source={{uri: obj.urlImg}} accessibilityLabel={obj.nome} />
 
@@ -62,7 +62,7 @@ const Index = (props: any) => {
                         ))
                     }
                 </View>
-            </View>
+            </DivInfo>
         </View>
     );
 }
