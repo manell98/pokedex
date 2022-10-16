@@ -1,63 +1,43 @@
 import {StyleSheet} from "react-native";
 
 export const styles = StyleSheet.create({
-    container: {
-        padding: 40,
-        backgroundColor: '#131016',
-    },
-    viewInput: {
-        width: "100%",
-        flexDirection: "row",
-        marginBottom: 40,
-    },
-    input: {
-        height: 56,
-        borderRadius: 5,
-        backgroundColor: "#1F1E25",
-        flex: 1,
-        padding: 16,
-        marginRight: 16,
-        color: "#ccc",
-        fontSize: 16,
-    },
-    botao: {
-        backgroundColor: "#39354d",
-        borderRadius: 5,
-        height: 56,
-        width: 56,
+    div: {
+        paddingTop: 42,
+        paddingBottom: 42,
+        width: '100%',
+        flexDirection: 'row',
         alignItems: "center",
         justifyContent: "center",
-    },
-    textoBotao: {
-        color: "#ccc",
-        fontSize: 30,
-    },
-    containerPrincipalPokemon: {
-        flexDirection: "row",
         flexWrap: "wrap",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    containerImgPokemon: {
-        backgroundColor: "rgba(255,255,255,0.08)",
-        marginBottom: 5,
-        borderRadius: 5,
-        height: 200,
-        width: "48%",
-        marginRight: 3,
-        alignItems: "center",
-        justifyContent: "center",
+        backgroundColor: '#708090',
     },
     img: {
         width: 100,
         height: 100,
+    },
+    viewInput: {
+        width: "100%",
+        marginBottom: 12,
+        alignItems: "center",
+    },
+    input: {
+        height: 56,
+        borderRadius: 5,
+        backgroundColor: "#ddd",
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
+    botao: {
+        marginTop: 20,
+        backgroundColor: "#111",
+        borderRadius: 5,
+        height: 56,
         alignItems: "center",
         justifyContent: "center",
+        paddingLeft: 7,
+        paddingRight: 7,
     },
-    nomePokemon: {
-        fontSize: 18,
-        color: "#ccc",
-        textAlign: "center",
-    },
+    textoBotao: {
+        color: "#fff",
+    }
 });
