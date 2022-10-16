@@ -18,9 +18,10 @@ export const styles = StyleSheet.create({
         padding: 16,
         marginRight: 16,
         color: "#ccc",
+        fontSize: 16,
     },
     botao: {
-        backgroundColor: "#1d7ecb",
+        backgroundColor: "#39354d",
         borderRadius: 5,
         height: 56,
         width: 56,
@@ -28,7 +29,7 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
     },
     textoBotao: {
-        color: "#fff",
+        color: "#ccc",
         fontSize: 30,
     },
     containerPrincipalPokemon: {
@@ -39,7 +40,7 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
     },
     containerImgPokemon: {
-        backgroundColor: "rgba(204,204,204,0.13)",
+        backgroundColor: "rgba(255,255,255,0.08)",
         marginBottom: 5,
         borderRadius: 5,
         height: 200,

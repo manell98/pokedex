@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { styles } from "./styles";
 import { InfoPokemonInterface } from "./interfaces/infoPokemon";
+import { AntDesign } from "@expo/vector-icons";
 
 const Index = (props: any) => {
     // @ts-ignore
     const [dadosDoPokemon, setDadosDoPokemon] = useState<Array<InfoPokemonInterface>>([] as InfoPokemonInterface);
     const [pokemonInformado, setPokemonInformado] = useState("");
     const [pokemon, setPokemon] = useState<InfoPokemonInterface>({} as InfoPokemonInterface);
+    const [valorUserEffect, setValorUserEffect] = useState<boolean>(false);
 
     const buscarPokemon = async (nomePokemon: string) => {
         const nomePokemonLowerCase: string = nomePokemon.toLowerCase();
@@ -17,6 +19,9 @@ const Index = (props: any) => {
 
         if (pokemonEncontrado) {
             setPokemon(pokemonEncontrado);
+        } else {
+            setPokemon({nome: "", img: ""})
+            setValorUserEffect(false);
         }
     };
 
@@ -39,7 +44,7 @@ const Index = (props: any) => {
 
     useEffect(() => {
         listarPokemons();
-    }, []);
+    }, [valorUserEffect]);
 
     return (
         <ScrollView>
@@ -52,7 +57,7 @@ const Index = (props: any) => {
                         placeholderTextColor="rgba(204,204,204,0.47)"
                     />
                     <TouchableOpacity style={styles.botao} onPress={() => buscarPokemon(pokemonInformado)}>
-                        <Text style={styles.textoBotao}>+</Text>
+                        <AntDesign name="search1" style={styles.textoBotao} />
                     </TouchableOpacity>
                 </View>
 
@@ -80,7 +85,6 @@ const Index = (props: any) => {
                                 </TouchableOpacity>
                             </View>
                         ))
-
                     }
                 </View>
             </View>
