@@ -43,35 +43,46 @@ const Index = (props: any) => {
 
     return (
         <ScrollView>
-            <View style={styles.div}>
+            <View style={styles.container}>
                 <View style={styles.viewInput}>
                     <TextInput
                         style={styles.input}
                         onChangeText={(nomePokemon: string) => setPokemonInformado(String(nomePokemon))}
                         placeholder="Digite o nome do pokemon"
-                        placeholderTextColor="#111"
+                        placeholderTextColor="rgba(204,204,204,0.47)"
                     />
                     <TouchableOpacity style={styles.botao} onPress={() => buscarPokemon(pokemonInformado)}>
-                        <Text style={styles.textoBotao}>Buscar Pokemon Informado</Text>
+                        <Text style={styles.textoBotao}>+</Text>
                     </TouchableOpacity>
                 </View>
 
-                { pokemon.nome ?
-                    <TouchableOpacity onPress={() => props.navigation.navigate('infoPokemon', {
-                        nome: pokemon.nome,
-                        urlImg: pokemon.img
-                    })}>
-                        <Image style={styles.img} source={{uri: pokemon.img}} accessibilityLabel={pokemon.nome} />
-                    </TouchableOpacity> :
-                    dadosDoPokemon.map((dadosDoPokemon: InfoPokemonInterface, index: number) => (
-                        <TouchableOpacity key={index} onPress={() => props.navigation.navigate('infoPokemon', {
-                            nome: dadosDoPokemon.nome,
-                            urlImg: dadosDoPokemon.img
-                        })}>
-                            <Image style={styles.img} source={{uri: dadosDoPokemon.img}} accessibilityLabel={dadosDoPokemon.nome} />
-                        </TouchableOpacity>
-                    ))
-                }
+                <View style={styles.containerPrincipalPokemon}>
+                    { pokemon.nome ?
+
+                        <View style={styles.containerImgPokemon}>
+                            <TouchableOpacity onPress={() => props.navigation.navigate('infoPokemon', {
+                                nome: pokemon.nome,
+                                urlImg: pokemon.img
+                            })}>
+                                <Image style={styles.img} source={{uri: pokemon.img}} accessibilityLabel={pokemon.nome} />
+                                <Text style={styles.nomePokemon}>{pokemon.nome.toUpperCase()}</Text>
+                            </TouchableOpacity>
+                        </View> :
+
+                        dadosDoPokemon.map((dadosDoPokemon: InfoPokemonInterface, index: number) => (
+                            <View key={index} style={styles.containerImgPokemon}>
+                                <TouchableOpacity onPress={() => props.navigation.navigate('infoPokemon', {
+                                    nome: dadosDoPokemon.nome,
+                                    urlImg: dadosDoPokemon.img
+                                })}>
+                                    <Image style={styles.img} source={{uri: dadosDoPokemon.img}} accessibilityLabel={dadosDoPokemon.nome} />
+                                    <Text style={styles.nomePokemon}>{dadosDoPokemon.nome.toUpperCase()}</Text>
+                                </TouchableOpacity>
+                            </View>
+                        ))
+
+                    }
+                </View>
             </View>
         </ScrollView>
     );
