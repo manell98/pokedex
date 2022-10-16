@@ -1,7 +1,7 @@
 import {Image, Text, View} from "react-native";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import { styles } from "./styles";
+import {styles, BarraProgressoStats} from "./styles";
 
 import {TipoDoPokemonInterface} from "../interfaces/tipoDoPokemon";
 import {EstatisticasDoPokemonInterface} from "../interfaces/estatisticasDoPokemon";
@@ -48,7 +48,10 @@ const Index = (props: any) => {
                         infoPokemon.stats.map((objStats: EstatisticasDoPokemonInterface) => (
                             <View style={styles.divStatsInfo} key={objStats.stat.name}>
                                 <Text style={styles.textStatName}>{objStats.stat.name.toUpperCase()}</Text>
-                                <Text style={styles.textStatBaseStat}>{objStats.base_stat}</Text>
+
+                                <BarraProgressoStats valor={objStats.base_stat}>
+                                    <Text style={styles.textStatBaseStat}>{objStats.base_stat}</Text>
+                                </BarraProgressoStats>
                             </View>
                         ))
                     }

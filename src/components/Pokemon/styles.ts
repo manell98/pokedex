@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: "center",
         justifyContent: "center",
-        flexWrap: "wrap"
+        flexWrap: "wrap",
+        backgroundColor: '#708090',
     },
     img: {
         width: 100,
