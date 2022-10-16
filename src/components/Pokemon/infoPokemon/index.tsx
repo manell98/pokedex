@@ -1,7 +1,7 @@
 import {Image, Text, View} from "react-native";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {styles, BarraProgressoStats} from "./styles";
+import {styles, BarraProgressoStats, DivStatsInfo, DivType, DivNomePokemon} from "./styles";
 
 import {TipoDoPokemonInterface} from "../interfaces/tipoDoPokemon";
 import {EstatisticasDoPokemonInterface} from "../interfaces/estatisticasDoPokemon";
@@ -10,7 +10,13 @@ const Index = (props: any) => {
     const obj = props.route.params;
 
     const [infoPokemon, setInfoPokemon] = useState({
-        types: [],
+        types: [{
+            slot: 0,
+            type: {
+                name: "",
+                url: ""
+            },
+        }],
         stats: [],
     });
 
@@ -26,9 +32,9 @@ const Index = (props: any) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.divNomePokemon}>
+            <DivNomePokemon tipo={infoPokemon.types[0].type.name}>
                 <Text style={styles.texNomePokemon}>{obj.nome[0].toUpperCase() + obj.nome.substring(1)}</Text>
-            </View>
+            </DivNomePokemon>
 
             <View style={styles.divInfo}>
                 <View style={styles.divInfoHeader}>
@@ -36,9 +42,9 @@ const Index = (props: any) => {
 
                     {
                         infoPokemon.types.map((objType: TipoDoPokemonInterface) => (
-                            <View key={objType.slot} style={styles.divType}>
+                            <DivType key={objType.slot} tipo={objType.type.name}>
                                 <Text style={styles.textType}>{objType.type.name.toUpperCase()}</Text>
-                            </View>
+                            </DivType>
                         ))
                     }
                 </View>
@@ -46,13 +52,13 @@ const Index = (props: any) => {
                 <View style={styles.divStats}>
                     {
                         infoPokemon.stats.map((objStats: EstatisticasDoPokemonInterface) => (
-                            <View style={styles.divStatsInfo} key={objStats.stat.name}>
+                            <DivStatsInfo key={objStats.stat.name} valor={objStats.base_stat}>
                                 <Text style={styles.textStatName}>{objStats.stat.name.toUpperCase()}</Text>
 
                                 <BarraProgressoStats valor={objStats.base_stat}>
                                     <Text style={styles.textStatBaseStat}>{objStats.base_stat}</Text>
                                 </BarraProgressoStats>
-                            </View>
+                            </DivStatsInfo>
                         ))
                     }
                 </View>

@@ -2,8 +2,8 @@ import {StyleSheet} from "react-native";
 
 export const styles = StyleSheet.create({
     div: {
-        marginTop: 42,
-        marginBottom: 42,
+        paddingTop: 42,
+        paddingBottom: 42,
         width: '100%',
         flexDirection: 'row',
         alignItems: "center",
